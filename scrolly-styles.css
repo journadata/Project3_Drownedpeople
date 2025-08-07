@@ -1,0 +1,169 @@
+.scrolly-container {
+    position: relative;
+    margin-bottom: 1.2em;
+}
+
+.sticky-thing {
+    position: sticky;
+    top: 0;
+    transform: translate(0px, 0px);
+    z-index: 0;
+    height: 100svh;
+    width: 100vw;
+    margin: 0;
+    overflow: hidden;
+    /* Center everything inside */
+    /* display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden; */
+}
+
+.sticky-thing > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;  
+}
+
+.video-container {
+    position: sticky;
+    top: 0;
+    z-index: -1;
+}
+
+.scrolly-container video {
+    position: absolute;
+    top: 0;
+    height: auto;
+    width: 100%;
+}
+
+.sticky-thing iframe {
+    position: absolute;
+    top: 0;
+    max-width: 100%;
+    min-height: 100vh;
+}
+
+.steps-container {
+    transform: translate3d(0,0,0);
+    position: relative;
+    padding: 0;
+    z-index: 10;
+    max-width: auto;
+    margin: 0 auto;
+    padding-bottom: 4em;
+}
+
+.step {
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50svh;
+    transform: translate(0px, 0px);
+}
+
+.step p {
+    text-align: left;
+}
+
+.step p:last-child {
+    padding: 0;
+}
+
+.step > * {
+    width: 600px;
+    margin-left: 1.3em;
+    margin-right: 1.3em;
+    text-align: center;
+    padding: 1.2em !important;
+    background-color: white;
+}
+
+.sticky-thing > canvas {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    display: block;  
+}
+.svg-container {
+    flex: 1;
+    max-width: 300px;
+  }
+
+svg {
+width: 100%;
+height: auto;
+}
+
+.profile-list {
+    flex: 1 1 400px; /* takes remaining space */
+    min-width: 250px; /* prevent it from shrinking too much */
+}
+
+.profile-list h2 {
+margin-bottom: 20px;
+}
+
+.profile-list ul {
+list-style: none;
+padding: 0;
+}
+
+.profile-list li {
+margin-bottom: 10px;
+font-size: 1.1em;
+position: relative;
+padding-left: 20px;
+}
+
+.profile-list li::before {
+content: "•";
+position: absolute;
+left: 0;
+color: #0077b6; /* blue bullet */
+font-size: 1.3em;
+line-height: 1;
+}
+
+.victim {
+    animation: sink 60s linear forwards;
+}
+
+@keyframes sink {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(120px) rotate(10deg); opacity: 0; }
+}
+
+
+
+/* When it's less than 700 pixels wide, do normal scrollytelling */
+
+@media only screen and (min-width: 700px) {
+    .scrolly-container.side-by-side {
+        display: flex;
+    }
+
+    .scrolly-container.side-by-side>div {
+        flex-basis: 0;
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 0.75em;
+    }
+
+    .scrolly-container.side-by-side .scrolly-overlay {
+        margin-top: 70vh;
+        order: 0;
+        /* Change these to adjust sizing options */
+        min-width: 12rem;
+        max-width: 16rem;
+    }
+
+    .scrolly-container.side-by-side .sticky-thing {
+        order: 1;
+        flex-grow: 2;
+    }
+}

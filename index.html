@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+  <meta charset="utf-8">
+    
+    <style>
+      .wave-wrapper {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 35%;
+        z-index: 1000;
+        overflow: hidden;
+        animation: waveIntro 5s ease-in-out forwards;
+        transform: scaleY(-1); /* 👈 Invert the wave vertically */
+      }
+
+      @keyframes waveIntro {
+        0% {
+          top: -100%;
+        }
+        50% {
+          top: 0%;
+        }
+        80% {
+          top: -10%;
+        }
+        100% {
+          top: 0%;
+        }
+      }
+
+      .wave svg {
+        width: 200%;
+        height: 100%;
+        animation: waveMove 5s linear infinite;
+      }
+
+      .wave path {
+        fill: #a5bfdd;
+      }
+
+      @keyframes waveMove {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      h1 {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding-top: 50px;
+        font-family: sans-serif;
+        color: #34485E;
+      }
+      h2 {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding-top: 50px;
+        font-family: sans-serif;
+        color: #a5bfdd;
+      }
+     
+    </style>
+  
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drowned</title>
+
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">  
+  
+
+  <style>
+    body {
+      margin: 0;
+      font-size: 20px;
+      padding: 0;
+      height: 100%;
+      background-color: #f2e3c7; /* color arena */
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      text-rendering: optimizeLegibility;
+      flex-direction: row; /* ensure horizontal layout */
+      flex-wrap: wrap; /* in case of small screens */
+    }
+
+    .content {
+      max-width: 640px;
+      margin: auto;
+    }
+
+    .header {
+      padding-top: 100px;
+      position: relative;
+      z-index: 10;
+    }
+
+    a {
+      color: #34485E;
+    }
+
+    .footer {
+      background: #f2e3c7;
+      text-align: center;
+      font-size: 0.8em;
+      margin-top: 4em;
+      padding: 4em 0;
+    }
+
+    figure {
+      margin: 0;
+      padding-bottom: 1.2em;
+    }
+
+    figcaption {
+      font-size: 0.8em;
+      text-align: center;
+      margin-top: 0.5em;
+      color: #f2e3c7;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding-top: 40px;
+      font-family: 'Fira Sans', Georgia, serif;
+      font-weight: bold;
+      font-size: 3em;
+      line-height: 1.1;
+    }
+
+    .subhead {
+      font-family: 'Fira Sans', Georgia, serif;
+      font-size: 1em;
+    }
+
+    iframe,
+    img,
+    video {
+      max-width: 100%;
+    }
+
+    p {
+      line-height: 1.6;
+      margin: 0;
+      padding-bottom: 1.2em;
+      font-family: Georgia, serif;
+    }
+
+    ul {
+      margin: 0;
+      padding-bottom: 1em;
+      line-height: 1.6;
+    }
+
+    iframe {
+      padding-bottom: 1.2em;
+    }
+
+    .full-width figure {
+      text-align: center;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      background: #f2e3c7;
+    }
+       
+    /* margin on mobile */
+    @media (max-width: 640px) {
+      body {
+        font-size: 18px;
+      }
+
+      .content {
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+      }
+    }
+  </style>
+  <link href="scrolly-styles.css" rel="stylesheet">
+  <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.2.0/scrollama.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+</head>
+
+<body>
+  <div class="wave-wrapper">
+    <div class="wave">
+      <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+        <path d="M0,100 C150,200 350,0 600,100 C850,200 1050,0 1200,100 L1200,200 L0,200 Z" />
+      </svg>
+    </div>
+  </div>
+ 
+  <div class="content">
+    <div class="header">
+      <h1>Drowning Deaths on Catalonia’s Beaches: The Unseen Summer Tragedy</h1>
+      <p class="subhead">Remembering the lives lost to the sea and revealing patterns behind Catalonia’s summer drownings.</p>
+    </div>
+    <div class="byline">
+      <p>By <a href="https://github.com/journadata">Beatriz Gálvez</a></p>
+    </div>
+    <p>Every summer, millions of people flock to Catalonia’s coastline in search of sun, sand, and sea. But behind the idyllic postcards lies a stark and often overlooked reality: each year, dozens of lives are lost to drowning. These incidents rarely make headlines beyond a brief mention, leaving the scale of the tragedy hidden from public view.</p>
+    <p>This project brings together the most comprehensive dataset ever compiled on drownings along Catalonia’s beaches. Using official records, local news, and field reports, it documents when, where, and under what circumstances these deaths occur. The goal is simple: to make the invisible visible—so that policymakers, lifeguards, and the public can better understand the patterns, risks, and human cost of our summers by the sea.
+    </p>
+    
+  </div>
+  <section id="scrolly-images" class="scrolly-container">
+    <div class="sticky-thing">
+      <img src="maps/map1.png">
+    </div>
+    <div class="steps-container">
+      <div class="step" id="step1">
+        <div>
+          <p>This is the entire Catalan coast — 580 kilometers of Mediterranean shoreline stretching from the French border to the Ebro Delta.</p>
+          <p>But this same coastline took lives this summer.
+          </p>
+        </div>
+      </div>
+      <div class="step" id="step2">
+        <p>Drownings occurred on beaches spanning from Barcelona in the south to Sant Pere Pescador in the north.</p>
+        <p>In just the past month, several people drowned here — locals, tourists, swimmers, and elders.
+          Different places. The same silence after the waves.</p>
+      </div>
+      <div class="step" id="step3">
+        <p>13 drownings occurred over one month along the Catalan coast. 
+          <code>Most victims were men; ages ranged from 18 to 82.</code>
+        </p>
+      </div>
+      <div class="step" id="step4">
+        <p>Several drownings occurred when no surveillance was present or after guards had ended their shift.</p>
+      </div>
+      <div class="step" id="step5">
+        <p>In deed, every year happens the same</p>
+        <!-- <img width="auto" height="auto" frameborder="0"
+        src="charts/barchart.svg"> -->
+      
+      
+        <script type="module">
+        import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+          // Sample data — replace with your actual data
+          const evolution_drowned = [
+            { Year: "2013", Drowned_people: 16 },
+            { Year: "2014", Drowned_people: 22 },
+            { Year: "2015", Drowned_people: 18 },
+            { Year: "2016", Drowned_people: 25 },
+            { Year: "2017", Drowned_people: 19 },
+            { Year: "2018", Drowned_people: 21 },
+            { Year: "2019", Drowned_people: 17 },
+            { Year: "2020", Drowned_people: 20 },
+            { Year: "2021", Drowned_people: 23 },
+            { Year: "2022", Drowned_people: 24 }
+          ];
+
+          // Create the bar chart
+          const barchart = Plot.plot({
+            width: 500,
+            height: 300,
+            title: "For a decade, at least 16 people have died drowned on the beach",
+            x: {
+              label: "Years",
+              ticks: [],
+              tickFormat: () => ""
+            },
+            y: {
+              label: "Drowned dead",
+              ticks: [],
+              tickFormat: () => "",
+              grid: false
+            },
+            marks: [
+              Plot.barY(evolution_drowned, {
+                x: "Year",
+                y: "Drowned_people",
+                fill: "#a5bfdd",
+                tip: true
+              }),
+              
+            ]
+          });
+
+          // Append chart to container
+          document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("chart").appendChild(barchart);
+
+            document.getElementById("download-btn").addEventListener("click", () => {
+              const serializer = new XMLSerializer();
+              const svgString = serializer.serializeToString(barchart);
+              const blob = new Blob([svgString], { type: "image/svg+xml" });
+              const url = URL.createObjectURL(blob);
+
+              const link = document.createElement("a");
+              link.href = url;
+              link.download = "drowned-barchart.svg";
+              link.click();
+
+              URL.revokeObjectURL(url);
+            });
+          });
+        </script>
+        
+        <div id="chart"></div>
+      </div>
+     
+      
+
+    </div>
+  </section>
+  <div class="content">
+    <p>An analysis of the 14 drowning cases in Catalonia during the summer of 2025 reveals a clear pattern: <strong>most incidents occurred in the late afternoon and evening</strong>, particularly after 5 p.m., when beach surveillance often ends. </p>
+    <p>Nearly half of the drownings happened either at unsupervised beaches or after lifeguards had left, and in several cases, <strong>no flag or an "out of service" flag was displayed </strong> — highlighting gaps in warning systems during off-hours.</p>
+    <p>Surprisingly, 6 victims drowned under a green flag, suggesting that <strong>calm sea conditions alone don’t guarantee safety</strong>. These patterns point to a critical risk period at the end of the day and underscore the dangers posed by insufficient surveillance and ambiguous flag signaling.</p>
+    <figure>
+   
+      <figcaption>
+        <div class="flourish-embed flourish-heatmap" data-src="visualisation/24558508"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/24558508/thumbnail" width="100%" alt="heatmap visualization" /></noscript>
+        </div>
+      </figcaption>
+    </figure>
+    <h2>Even Green Flags Aren’t Risk-Free: Most Drownings Occur Despite Lifeguard Surveillance</h2>
+    <p>Data from all beach safety records show that green and yellow flags—usually signals of active lifeguard surveillance—where present in 138 drowns, with 104 and 34 respectively.</p>
+     <p>Yet, paradoxically, <strong>most drownings occurred with green or yellow flags</strong> — meaning swimming was allowed. Meanwhile, beaches with no flag almost always lack lifeguard presence. 
+      The dataset reveals a critical insight:<strong> flag colors indicate supervision, but they don’t eliminate risk.</strong></p>
+      <p>However, many others occurred without surveillance, particularly early or late in the season.
+      </p>
+    </p>
+  </div>
+  <div class="full-width">
+    <figure>
+      <div class="flourish-embed flourish-pictogram" data-src="visualisation/24575825"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/24575825/thumbnail" width="100%" alt="pictogram visualization" /></noscript></div>
+      <figcaption>The graphic shows the surprising truth: most drownings happened under surveillance and a green flag</figcaption>
+    </figure>
+  </div>
+ 
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-5.0 -10.0 110.0 135.0">
+      <g class="victim">
+        <path d="m54.688 29.703c0 6.25-9.375 6.25-9.375 0s9.375-6.25 9.375 0"/>
+        <path d="m46.211 50.426c-0.82813-0.30078-1.6445-0.55078-2.4648-0.79297l-0.011719 17.777c0 0.41016-0.16016 0.80469-0.44922 1.0938l-6.1484 6.2422c-1.4375 1.4648-1.4219 3.832 0.039062 5.2734 1.4023 1.3828 3.8867 1.3672 5.2734-0.039062l7.207-7.3086c0.47656-0.48828 0.81641-1.1094 0.98047-1.8008l1.6133-8.3984c0.097656-0.5 0.42969-0.92188 0.89453-1.1289 0.46484-0.20703 1.0039-0.17578 1.4414 0.082031l4.0977 2.4453c0.38672 0.23047 0.65625 0.61719 0.73828 1.0586l1.8125 9.8906c0.011719 0.058594 0.015625 0.11719 0.023437 0.17969 0.13281 1.9766 1.8594 3.4609 3.8047 3.4727 0.03125 0 0.058594 0 0.089844-0.003906 2.125-0.14453 3.6797-1.9258 3.5391-3.9727l-1.9805-12.516c-0.10156-1.3672-0.77344-2.4727-1.8203-3.0898-0.10547-0.0625-0.20312-0.13672-0.28906-0.22266l-4.9453-4.7891c-0.86328-0.125-1.7188-0.25391-2.5352-0.39844-3.2969-0.57031-6.7617-1.543-10.906-3.0586z"/>
+        <path d="m47.281 37.762c3.9688 1.4492 7.2617 2.375 10.363 2.9141 2.1211 0.36719 4.7773 0.74219 7.6523 0.97266l0.48047-0.15625c0.050781-0.015626 0.10547-0.03125 0.15625-0.042969 0.875-0.1875 1.6641-0.67578 2.2188-1.3828l8.6602-13.281c1.3242-1.7266 1.0273-4.0742-0.58984-5.3438-0.78906-0.60547-1.7656-0.875-2.75-0.74609-0.98828 0.125-1.8633 0.62891-2.4727 1.418l-7.4844 11.734c-0.22656 0.35547-0.58594 0.60547-1 0.6875l-11.754 2.4336c-0.26953 0.058594-0.55078 0.039062-0.81641-0.046875l-10.82-3.6406c-0.30469-0.10156-0.57031-0.29688-0.75781-0.55078l-1.0156-1.3789c-0.13672-0.18359-0.22656-0.39062-0.27344-0.61328l-1.9062-9.2422c-0.51953-1.5508-1.9766-2.543-3.543-2.543-0.37109 0-0.74219 0.054687-1.1133 0.17188-1.957 0.61328-3.0508 2.707-2.4375 4.668l2.6641 11.234c4.9727-0.074219 10.637 0.57812 16.539 2.7344z"/>
+        <path d="m47.281 47.488c3.9648 1.4492 7.2578 2.375 10.363 2.9141 0.050781 0.007812 0.11328 0.019531 0.16406 0.027344v-5.2188c0-0.50391 0.24219-0.96094 0.62891-1.25-0.44141-0.070313-0.89844-0.13281-1.3281-0.20703-3.293-0.57031-6.7578-1.5391-10.906-3.0547-5.0195-1.8359-9.9062-2.4883-14.285-2.5234 0.42578 0.47656 0.97266 0.87109 1.6133 1.0898l9.2695 4.0117c0.57031 0.24609 0.94141 0.8125 0.94141 1.4336v1.6641c1.168 0.32031 2.3438 0.68359 3.5352 1.1172z"/>
+      </g>
+    </svg>
+  </div>
+
+  </div>
+  <div class="content">
+    <h2>Who is the Drowning Victim?</h2>
+    <ul>
+      <li>A man </li>
+      <li>Aged 60 or older</li>
+      <li>Primarily Spanish nationals</li>
+      <li>Other common nationalities: French, German, Belgian</li>
+      <li>Drowns even when swimming is allowed (green/yellow flag) or in areas with no surveillance</li>
+    </ul>
+  </div>
+
+  
+  <div id="final-message" class="content" style="display:none; text-align:center; font-size:1.5em; color:#4c8ed9; margin-top:2rem;">
+    60 seconds. That’s all it takes.
+  </div>
+ 
+  <div class="content">
+    <p>...Now you know who he was.<br /><strong>But 60 seconds weren’t enough to save him.</strong></p>
+    <p>
+    It can happen in silence, in shallow water, and in under a minute.<br />
+    <strong>Drowning doesn’t look like drowning.</strong><br />
+   
+  </p>
+  </div>
+
+  <script>
+    // Show final message after 60 seconds
+    setTimeout(() => {
+      document.getElementById('final-message').style.display = 'block';
+    }, 60000);
+  </script>
+  
+
+
+
+  <div class="footer">
+    <div class="content">
+      <p>You can find the code for this template <a href="https://github.com/jsoma/page-templates/">here</a>. </p>
+    </div>
+  </div>
+
+  <script>
+    /*************
+    
+    This is the JavaScript that makes the scrolly work 
+    
+    *************/
+
+    /* 
+    This part attaches a scroll to the element with id="scrolly-images"    
+    */
+    (() => {
+      const scroller = scrollama()
+
+      scroller
+        .setup({
+          parent: document.querySelector("#scrolly-images"),
+          step: ".step",
+          offset: 0.6,
+        })
+        .onStepEnter(function ({ element, index, direction }) {
+          const event = new CustomEvent("stepin", { detail: { direction: direction } })
+          element.dispatchEvent(event)
+        })
+        .onStepExit(function ({ element, index, direction }) {
+          const event = new CustomEvent("stepout", { detail: { direction: direction } })
+          if (direction === "up" && element.previousElementSibling) {
+            const event = new CustomEvent("stepin", { detail: { direction: direction } })
+            element.previousElementSibling.dispatchEvent(event)
+          }
+        })
+
+      window.addEventListener("resize", scroller.resize)
+    })()
+
+    /*
+    This part sets up your actions. In this case, it's changing the image in the scrolly container.
+    */
+    d3.select("#step1").on('stepin', (e) => {
+      d3.select(e.target.closest(".scrolly-container")).select("img").attr("src", "maps/map2.png")
+    })
+
+    d3.select("#step2").on('stepin', (e) => {
+      d3.select(e.target.closest(".scrolly-container")).select("img").attr("src", "maps/map3.png")
+    })
+
+    d3.select("#step3").on('stepin', (e) => {
+      d3.select(e.target.closest(".scrolly-container")).select("img").attr("src", "maps/map4.png")
+    })
+
+    d3.select("#step4").on('stepin', (e) => {
+      d3.select(e.target.closest(".scrolly-container")).select("img").attr("src", "maps/map5.png")
+    })
+
+    
+  </script>
+  <style>
+    /* Change this to adjust the padding between steps */
+    .step {
+      margin-bottom: 70vh;
+    }
+  </style>
+
+</body>
+
+</html>
