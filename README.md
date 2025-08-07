@@ -4,6 +4,8 @@
 
 This project was inspired by recent drowning cases in the sea in Catalonia, a region in Spain. My main curiosity was to find out if there was any pattern and if there were specific locations where drownings occurred more frequently.
 
+I also wanted to know if there was a profile. 
+
 ---
 
 ## Project Workflow
@@ -11,8 +13,8 @@ This project was inspired by recent drowning cases in the sea in Catalonia, a re
 ### 0. Data Acquisition and Preparation
 
 - Collected data from all official government press releases.
-- Cleaned the data using Google Sheets for better structuring.
-- Geolocated the points to be able to map them.
+- Cleaned the data using Python pandas for better structuring.
+- Geolocated the points to be able to map them (geopy.geocoders / Nominatim).
 - Requested official data from the government to cross-check and validate the information collected.
 
 ### 1. Creating the Map (2025)
@@ -21,6 +23,7 @@ This project was inspired by recent drowning cases in the sea in Catalonia, a re
   - Obtain the ocean, land, and coastline layers.
   - Import a CSV file containing coordinates where drownings occurred.
   - Import the CSV again to display flags and related icons.
+  - Illustrator to to edit the layers and create the icons
 
 - Icons used:
   - Flag: *Flag* by Iain Hector - [Noun Project](https://thenounproject.com/browse/icons/term/flag/) (CC BY 3.0)
@@ -36,7 +39,8 @@ This project was inspired by recent drowning cases in the sea in Catalonia, a re
   - #5F7793
   - #f2e3c7
 
-- I tried to make the map interactive using aihtml, but was unable to fully integrate it into the website. Instead, I created a simpler scrolling image webpage using scrollama and generated .png images of each step from the map to embed.
+- DISPLAY: I tried to make the map interactive for an scrollytelling with ai2html and scrollama webpage, but I was unable to fully integrate it into the website. 
+- Instead, I created a simpler scrollytelling template with backgound images webpage scrolly-images/index.html. I used scrollama and generated .png images of each step from the map already created and edited.
 
 ### 2. Extracting and Analyzing Historical Data
 
@@ -48,9 +52,10 @@ This project was inspired by recent drowning cases in the sea in Catalonia, a re
 
 ### 3. Creating Visualizations
 
-- Created a liquid wave graphic with help from ChatGPT based on this example: [Stack Overflow example](https://stackoverflow.com/questions/65300031/d3-liquid-water-chart-conversion-from-d3v3-to-v4)
 
 - Built a temporal evolution chart of drownings over the past decade using D3 Observable, embedded as SVG in `index.html`. The live version is available here: [Evolution of Drownings in D3 Observable](https://observablehq.com/@journa4data/evolution_drowned)
+
+- Created a liquid wave graphic with help from ChatGPT based on this example: [Stack Overflow example](https://stackoverflow.com/questions/65300031/d3-liquid-water-chart-conversion-from-d3v3-to-v4)
 
 - Other graphics (e.g., showing most drownings occur when lifeguards are present and the flag is green, confirmed by historical data) were created with Flourish.
 
