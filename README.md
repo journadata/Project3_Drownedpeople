@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This project was inspired by recent drowning cases in the sea in Catalonia, a region in Spain. My main curiosity was to find out if there was any pattern and if there were specific locations where drownings occurred more frequently.
+This project was inspired by recent drowning cases in the sea in Catalonia, a region in Spain. My main curiosity was to find out if there was any pattern and if there were specific locations where drownings occurred more frequently. Here you can check the website: [Drowned People in the sea](https://journadata.github.io/Project3_Drownedpeople/)
 
-I also wanted to know if there was a profile. 
+I also wanted to know if there was a pattern behind.
 
 ---
 
